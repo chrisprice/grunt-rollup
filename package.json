@@ -1,0 +1,42 @@
+{
+  "name": "grunt-rollup",
+  "description": "Grunt plugin for rollup - next-generation ES6 module bundler",
+  "version": "0.0.1",
+  "homepage": "https://github.com/chrisprice/grunt-rollup",
+  "author": {
+    "name": "Chris Price",
+    "email": "price.c@gmail.com",
+    "url": "http://chrisprice.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chrisprice/grunt-rollup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisprice/grunt-rollup/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin",
+    "rollup"
+  ],
+  "dependencies": {
+    "promise": "^7.0.4",
+    "rollup": "^0.15.0"
+  }
+}

@@ -1,0 +1,74 @@
+/*
+ * grunt-rollup
+ * https://github.com/chrisprice/grunt-rollup
+ *
+ * Copyright (c) 2015 Chris Price
+ * Licensed under the MIT license.
+ */
+
+'use strict';
+
+var Promise = require('promise');
+var rollup = require('rollup');
+
+module.exports = function(grunt) {
+
+  grunt.registerMultiTask('rollup', 'Grunt plugin for rollup - next-generation ES6 module bundler', function() {
+
+    var done = this.async();
+
+    var options = this.options({
+      external: [],
+      format: 'es6',
+      exports: 'auto',
+      moduleId: null,
+      moduleName: null,
+      globals: {},
+      indent: true,
+      useStrict: true
+    });
+
+    var promises = this.files.map(function(f) {
+
+      if (f.src.length === 0) {
+        grunt.fail.warn('No entry point specified.');
+      }
+
+      if (f.src.length > 1) {
+        grunt.fail.warn('Multiple entry points are not supported.');
+      }
+
+      var entry = f.src[0];
+
+      if (!grunt.file.exists(entry)) {
+        grunt.fail.warn('Entry point "' + entry + '" not found.');
+      }
+
+      return rollup.rollup({
+        entry: entry,
+        external: options.external
+      }).then(function(bundle) {
+        var result = bundle.generate({
+          format: options.format,
+          exports: options.exports,
+          moduleId: options.moduleId,
+          moduleName: options.moduleName,
+          globals: options.globals,
+          indent: options.indent,
+          useStrict: options.useStrict
+        });
+
+        grunt.file.write(f.dest, result.code);
+      });
+    });
+
+    Promise.all(promises)
+      .then(function() {
+        done();
+      })
+      .catch(function(error) {
+        grunt.fail.warn(error);
+      });
+  });
+
+};
