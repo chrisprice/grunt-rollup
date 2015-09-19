@@ -31,10 +31,19 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     rollup: {
       default_options: {
-        options: {
-        },
+        options: {},
         files: {
           'tmp/default_options.js': ['test/fixtures/entry.js']
+        }
+      },
+      sourceMap: {
+        options: {
+          sourceMap: true,
+          banner: '// Top',
+          footer: '// Bottom'
+        },
+        files: {
+          'tmp/source_map.js': ['test/fixtures/entry.js']
         }
       }
     },

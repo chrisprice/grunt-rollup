@@ -37,7 +37,7 @@ grunt.initConfig({
 
 ### Options
 
-Supports all the options from [rollup's JavaScript API](https://github.com/rollup/rollup/wiki/JavaScript-API) apart from sourcemaps.
+Supports all the options from [rollup's JavaScript API](https://github.com/rollup/rollup/wiki/JavaScript-API).
 
 ### Usage Examples
 
