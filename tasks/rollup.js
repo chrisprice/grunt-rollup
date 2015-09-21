@@ -66,11 +66,15 @@ module.exports = function(grunt) {
           sourceMapFile: options.sourceMapFile
         });
 
-        grunt.file.write(f.dest, result.code);
+        var code = result.code;
 
         if (options.sourceMap === true) {
           grunt.file.write(f.dest + '.map', result.map.toString());
+        } else if (options.sourceMap === "inline") {
+          code += "\n//# sourceMappingURL=" + result.map.toUrl();
         }
+
+        grunt.file.write(f.dest, code);
       });
     });
 

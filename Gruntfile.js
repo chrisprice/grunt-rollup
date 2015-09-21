@@ -45,6 +45,14 @@ module.exports = function(grunt) {
         files: {
           'tmp/source_map.js': ['test/fixtures/entry.js']
         }
+      },
+      sourceMapInline: {
+        options: {
+          sourceMap: 'inline'
+        },
+        files: {
+          'tmp/source_map_inline.js': ['test/fixtures/entry.js']
+        }
       }
     },
 
