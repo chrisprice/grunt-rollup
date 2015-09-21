@@ -25,7 +25,11 @@ module.exports = function(grunt) {
       moduleName: null,
       globals: {},
       indent: true,
-      useStrict: true
+      useStrict: true,
+      banner: null,
+      footer: null,
+      sourceMap: false,
+      sourceMapFile: null
     });
 
     var promises = this.files.map(function(f) {
@@ -55,10 +59,22 @@ module.exports = function(grunt) {
           moduleName: options.moduleName,
           globals: options.globals,
           indent: options.indent,
-          useStrict: options.useStrict
+          useStrict: options.useStrict,
+          banner: options.banner,
+          footer: options.footer,
+          sourceMap: options.sourceMap,
+          sourceMapFile: options.sourceMapFile
         });
 
-        grunt.file.write(f.dest, result.code);
+        var code = result.code;
+
+        if (options.sourceMap === true) {
+          grunt.file.write(f.dest + '.map', result.map.toString());
+        } else if (options.sourceMap === "inline") {
+          code += "\n//# sourceMappingURL=" + result.map.toUrl();
+        }
+
+        grunt.file.write(f.dest, code);
       });
     });
 

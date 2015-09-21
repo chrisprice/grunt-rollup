@@ -1,0 +1,1 @@
+{"version":3,"file":null,"sources":["{cwd}/test/fixtures/bar.js","{cwd}/test/fixtures/entry.js"],"sourcesContent":["export default {};","import foo from './bar';\n\nconsole.log(foo);"],"names":[],"mappings":";UAAe,EAAE;;ACEjB,OAAO,CAAC,GAAG,CAAC,GAAG,CAAC,;"}
