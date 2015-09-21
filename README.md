@@ -41,8 +41,7 @@ Supports all the options from [rollup's JavaScript API](https://github.com/rollu
 
 
 ### Sourcemaps
-A value of `true` for `sourceMap` will output the map to a file with the same name as the JavaScript with `.map` appended. A value of `inline` for `sourceMap`
-will inline the sourcemap into the source file.
+A value of `true` for `sourceMap` will output the map to a file with the same name as the JavaScript with `.map` appended. A value of `inline` for `sourceMap` will inline the sourcemap into the source file.
 
 ### Usage Examples
 
