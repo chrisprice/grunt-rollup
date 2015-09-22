@@ -1,6 +1,6 @@
 # grunt-rollup
 
-![dependencies](https://david-dm.org/chrisprice/grunt-rollup.svg)
+[![dependencies](https://david-dm.org/chrisprice/grunt-rollup.svg)](https://david-dm.org/chrisprice/grunt-rollup)
 
 > Grunt plugin for [rollup](https://github.com/rollup/rollup) - next-generation ES6 module bundler
 
