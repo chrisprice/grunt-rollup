@@ -4,9 +4,7 @@ var grunt = require('grunt');
 
 function assertFilesSame(test, actual, expected, msg) {
   var actualContents = grunt.file.read(actual);
-  var expectedContents = grunt.file.read(expected)
-    // see https://github.com/rollup/rollup/issues/125
-    .replace(/\{cwd\}/ig, process.cwd().replace(/\\/ig, "/"));
+  var expectedContents = grunt.file.read(expected);
 
   test.equal(actualContents, expectedContents, msg);
 }
@@ -37,11 +35,9 @@ exports.rollup = {
   source_map_inline: function(test) {
     test.expect(1);
 
-    // need https://github.com/rollup/rollup/issues/125
-    // to compare with expected
-    var output = grunt.file.read("tmp/source_map_inline.js");
-
-    test.ok(Boolean(output.match(/\/\/# sourceMappingURL=data:application\/json;charset=utf-8;base64,/)));
+    assertFilesSame(test, 'tmp/source_map_inline.js',
+      'test/expected/source_map_inline.js',
+      'should describe behaviour with sourcemap inline.');
 
     test.done();
   }
