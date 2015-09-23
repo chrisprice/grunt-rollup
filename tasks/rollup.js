@@ -10,6 +10,7 @@
 
 var Promise = require('promise');
 var rollup = require('rollup');
+var path = require('path');
 
 module.exports = function(grunt) {
 
@@ -69,7 +70,9 @@ module.exports = function(grunt) {
         var code = result.code;
 
         if (options.sourceMap === true) {
-          grunt.file.write(f.dest + '.map', result.map.toString());
+          var sourceMapOutPath = f.dest + '.map';
+          grunt.file.write(sourceMapOutPath, result.map.toString());
+          code += "\n//# sourceMappingURL=" + path.basename(sourceMapOutPath);
         } else if (options.sourceMap === "inline") {
           code += "\n//# sourceMappingURL=" + result.map.toUrl();
         }

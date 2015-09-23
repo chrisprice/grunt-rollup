@@ -8,6 +8,8 @@
 
 'use strict';
 
+var path = require('path');
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -39,6 +41,7 @@ module.exports = function(grunt) {
       sourceMap: {
         options: {
           sourceMap: true,
+          sourceMapFile: path.resolve('tmp/source_map.js'),
           banner: '// Top',
           footer: '// Bottom'
         },
@@ -48,7 +51,8 @@ module.exports = function(grunt) {
       },
       sourceMapInline: {
         options: {
-          sourceMap: 'inline'
+          sourceMap: 'inline',
+          sourceMapFile: path.resolve('tmp/source_map_inline.js'),
         },
         files: {
           'tmp/source_map_inline.js': ['test/fixtures/entry.js']

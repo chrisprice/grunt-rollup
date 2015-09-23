@@ -1,3 +1,3 @@
-var foo = {};
+var bar = {};
 
-console.log(foo);
+console.log(bar);
