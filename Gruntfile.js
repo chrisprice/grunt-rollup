@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       sourceMap: {
         options: {
           sourceMap: true,
-          sourceMapFile: path.resolve('tmp/source_map.js'),
+          sourceMapRelativePaths: true,
           banner: '// Top',
           footer: '// Bottom'
         },

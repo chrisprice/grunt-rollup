@@ -30,7 +30,8 @@ module.exports = function(grunt) {
       banner: null,
       footer: null,
       sourceMap: false,
-      sourceMapFile: null
+      sourceMapFile: null,
+      sourceMapRelativePaths: false
     });
 
     var promises = this.files.map(function(f) {
@@ -53,6 +54,12 @@ module.exports = function(grunt) {
         entry: entry,
         external: options.external
       }).then(function(bundle) {
+
+        var sourceMapFile = options.sourceMapFile;
+        if (!sourceMapFile && options.sourceMapRelativePaths) {
+          sourceMapFile = path.resolve(f.dest);
+        }
+
         var result = bundle.generate({
           format: options.format,
           exports: options.exports,
@@ -64,7 +71,7 @@ module.exports = function(grunt) {
           banner: options.banner,
           footer: options.footer,
           sourceMap: options.sourceMap,
-          sourceMapFile: options.sourceMapFile
+          sourceMapFile: sourceMapFile
         });
 
         var code = result.code;
