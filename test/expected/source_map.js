@@ -1,6 +1,6 @@
 // Top
-var bar = {};
+var foo = {};
 
-console.log(bar);
+console.log(foo);
 // Bottom
 //# sourceMappingURL=source_map.js.map
