@@ -37,6 +37,6 @@
   ],
   "dependencies": {
     "promise": "^7.0.4",
-    "rollup": "^0.16.3"
+    "rollup": "^0.x"
   }
 }
