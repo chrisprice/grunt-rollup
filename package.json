@@ -1,19 +1,26 @@
 {
-  "name": "grunt-rollup",
-  "description": "Grunt plugin for rollup - next-generation ES6 module bundler",
+  "name": "grunt-rollup-babel",
+  "description": "Grunt plugin for rollup-babel - next-generation ES6 module bundler",
   "version": "0.4.0",
-  "homepage": "https://github.com/chrisprice/grunt-rollup",
-  "author": {
-    "name": "Chris Price",
-    "email": "price.c@gmail.com",
-    "url": "http://chrisprice.io"
-  },
+  "homepage": "https://github.com/reconbot/grunt-rollup-babel",
+  "author": [
+    {
+      "name": "Chris Price",
+      "email": "price.c@gmail.com",
+      "url": "http://chrisprice.io"
+    },
+    {
+      "name": "Francis Gulotta",
+      "email": "wizard@roborooter.com",
+      "url": "http://roborooter.com"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/chrisprice/grunt-rollup.git"
+    "url": "git://github.com/reconbot/grunt-rollup-babel.git"
   },
   "bugs": {
-    "url": "https://github.com/chrisprice/grunt-rollup/issues"
+    "url": "https://github.com/reconbot/grunt-rollup-babel/issues"
   },
   "license": "MIT",
   "engines": {
@@ -37,6 +44,6 @@
   ],
   "dependencies": {
     "promise": "^7.0.4",
-    "rollup": "^0.x"
+    "rollup-babel": "^0.x"
   }
 }

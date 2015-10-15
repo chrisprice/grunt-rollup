@@ -37,26 +37,26 @@ module.exports = function(grunt) {
         files: {
           'tmp/default_options.js': ['test/fixtures/entry.js']
         }
-      },
-      sourceMap: {
-        options: {
-          sourceMap: true,
-          sourceMapRelativePaths: true,
-          banner: '// Top',
-          footer: '// Bottom'
-        },
-        files: {
-          'tmp/source_map.js': ['test/fixtures/entry.js']
-        }
-      },
-      sourceMapInline: {
-        options: {
-          sourceMap: 'inline',
-          sourceMapFile: path.resolve('tmp/source_map_inline.js'),
-        },
-        files: {
-          'tmp/source_map_inline.js': ['test/fixtures/entry.js']
-        }
+      // },
+      // sourceMap: {
+      //   options: {
+      //     sourceMap: true,
+      //     sourceMapRelativePaths: true,
+      //     banner: '// Top',
+      //     footer: '// Bottom'
+      //   },
+      //   files: {
+      //     'tmp/source_map.js': ['test/fixtures/entry.js']
+      //   }
+      // },
+      // sourceMapInline: {
+      //   options: {
+      //     sourceMap: 'inline',
+      //     sourceMapFile: path.resolve('tmp/source_map_inline.js'),
+      //   },
+      //   files: {
+      //     'tmp/source_map_inline.js': ['test/fixtures/entry.js']
+      //   }
       }
     },
 
