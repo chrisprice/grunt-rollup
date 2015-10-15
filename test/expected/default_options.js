@@ -1,3 +1,5 @@
-var foo = {};
+function foo () {
+  "baz";
+}
 
 console.log(foo);

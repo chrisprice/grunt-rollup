@@ -1,8 +1,8 @@
-# grunt-rollup
-[![Build Status](https://travis-ci.org/chrisprice/grunt-rollup.svg)](https://travis-ci.org/chrisprice/grunt-rollup)
-[![dependencies](https://david-dm.org/chrisprice/grunt-rollup.svg)](https://david-dm.org/chrisprice/grunt-rollup)
+# grunt-rollup-babel
+[![Build Status](https://travis-ci.org/reconbot/grunt-rollup-babel.svg)](https://travis-ci.org/reconbot/grunt-rollup-babel)
+[![dependencies](https://david-dm.org/reconbot/grunt-rollup-babel.svg)](https://david-dm.org/reconbot/grunt-rollup-babel)
 
-> Grunt plugin for [rollup](https://github.com/rollup/rollup) - next-generation ES6 module bundler
+> Grunt plugin for [rollup-babel](https://github.com/rollup/rollup-babel) - next-generation ES6 module bundler forked from [grunt-rollup](https://github.com/chrisprice/grunt-rollup)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -10,7 +10,7 @@ This plugin requires Grunt `~0.4.5`
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-rollup --save-dev
+npm install grunt-rollup-babel --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
@@ -43,9 +43,8 @@ Supports all the options from [rollup's JavaScript API](https://github.com/rollu
 
 
 ### Sourcemaps
-A value of `true` for `sourceMap` will output the map to a file with the same name as the JavaScript with `.map` appended. A value of `inline` for `sourceMap` will inline the sourcemap into the source file.
 
-To get relative paths, set `sourceMapRelativePaths` to `true`. This sets rollup `sourceMapFile` property, making the sourcemap relative to the output file.
+Sourcemaps are not supported in rollup babel. When they are this plugin will work without issue.
 
 ### Usage Examples
 
@@ -65,7 +64,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Releasing
 
-```bash 
+```bash
 npm version minor && git push --tags origin master && npm publish
 ```
 

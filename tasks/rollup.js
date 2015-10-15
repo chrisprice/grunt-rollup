@@ -9,7 +9,7 @@
 'use strict';
 
 var Promise = require('promise');
-var rollup = require('rollup');
+var rollup = require('rollup-babel');
 var path = require('path');
 
 module.exports = function(grunt) {
@@ -31,7 +31,8 @@ module.exports = function(grunt) {
       footer: null,
       sourceMap: false,
       sourceMapFile: null,
-      sourceMapRelativePaths: false
+      sourceMapRelativePaths: false,
+      babel: true
     });
 
     var promises = this.files.map(function(f) {
