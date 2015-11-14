@@ -29,6 +29,8 @@ module.exports = function(grunt) {
       useStrict: true,
       banner: null,
       footer: null,
+      intro: null,
+      outro: null,
       sourceMap: false,
       sourceMapFile: null,
       sourceMapRelativePaths: false
@@ -70,6 +72,8 @@ module.exports = function(grunt) {
           useStrict: options.useStrict,
           banner: options.banner,
           footer: options.footer,
+          intro: options.intro,
+          outro: options.outro,
           sourceMap: options.sourceMap,
           sourceMapFile: sourceMapFile
         });
