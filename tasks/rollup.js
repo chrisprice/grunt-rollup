@@ -31,6 +31,7 @@ module.exports = function(grunt) {
       footer: null,
       intro: null,
       outro: null,
+      plugins:[],
       sourceMap: false,
       sourceMapFile: null,
       sourceMapRelativePaths: false
@@ -54,7 +55,8 @@ module.exports = function(grunt) {
 
       return rollup.rollup({
         entry: entry,
-        external: options.external
+        external: options.external,
+        plugins : options.plugins
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
