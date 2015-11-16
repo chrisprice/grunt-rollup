@@ -54,7 +54,7 @@ grunt.initConfig({
   rollup: {
     options: {},
     files: {
-      'src':'src/entry.js',
+      'src':'src/entry.js',  // Only one source file is permitted
       'dest': 'dest/bundle.js'
     },
   },
