@@ -54,7 +54,8 @@ grunt.initConfig({
   rollup: {
     options: {},
     files: {
-      'dest/bundle.js': ['src/entry.js'], // Only one source file is permitted
+      'src':'src/entry.js',
+      'dest': 'dest/bundle.js'
     },
   },
 });
@@ -65,7 +66,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Releasing
 
-```bash 
+```bash
 npm version minor && git push --tags origin master && npm publish
 ```
 
