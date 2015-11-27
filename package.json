@@ -1,7 +1,7 @@
 {
   "name": "grunt-rollup",
   "description": "Grunt plugin for rollup - next-generation ES6 module bundler",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "https://github.com/chrisprice/grunt-rollup",
   "author": {
     "name": "Chris Price",
