@@ -8,7 +8,7 @@
 
 'use strict';
 
-var Promise = require('promise');
+var Promise = require('es6-promise').Promise;
 var rollup = require('rollup');
 var path = require('path');
 
