@@ -68,10 +68,10 @@ var babel = require('rollup-plugin-babel');
 grunt.initConfig({
   rollup: {
     options: {
-    plugins: [
-          babel({
-              exclude: './node_modules/**'
-          })
+      plugins: [
+        babel({
+          exclude: './node_modules/**'
+        })
       ]
     },
     files: {
