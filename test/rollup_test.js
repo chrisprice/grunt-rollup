@@ -40,5 +40,31 @@ exports.rollup = {
       'should describe behaviour with sourcemap inline.');
 
     test.done();
+  },
+  plugin_array: function(test) {
+    test.expect(2);
+
+    assertFilesSame(test, 'tmp/plugin_array_1.js',
+      'test/expected/plugin_array_1.js',
+      'should handle an array of plugins.');
+
+    assertFilesSame(test, 'tmp/plugin_array_2.js',
+      'test/expected/plugin_array_2.js',
+      'should handle an array of plugins.');
+
+    test.done();
+  },
+  plugin_function: function(test) {
+    test.expect(2);
+
+    assertFilesSame(test, 'tmp/plugin_function_1.js',
+      'test/expected/plugin_function_1.js',
+      'should handle a plugins getter.');
+
+    assertFilesSame(test, 'tmp/plugin_function_2.js',
+      'test/expected/plugin_function_2.js',
+      'should handle a plugins getter.');
+
+    test.done();
   }
 };

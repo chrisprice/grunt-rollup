@@ -53,10 +53,16 @@ module.exports = function(grunt) {
         grunt.fail.warn('Entry point "' + entry + '" not found.');
       }
 
+      var plugins = options.plugins;
+
+      if (typeof plugins === 'function') {
+        plugins = plugins();
+      }
+
       return rollup.rollup({
         entry: entry,
         external: options.external,
-        plugins : options.plugins
+        plugins: plugins
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
