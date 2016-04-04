@@ -10,6 +10,8 @@
 
 var path = require('path');
 
+var plugin = require('./test/plugin');
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -56,6 +58,30 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/source_map_inline.js': ['test/fixtures/entry.js']
+        }
+      },
+      pluginArray: {
+        options: {
+          plugins: [
+            plugin()
+          ]
+        },
+        files: {
+          'tmp/plugin_array_1.js': ['test/fixtures/entry.js'],
+          'tmp/plugin_array_2.js': ['test/fixtures/entry.js']
+        }
+      },
+      pluginFunction: {
+        options: {
+          plugins: function() {
+            return [
+              plugin()
+            ];
+          }
+        },
+        files: {
+          'tmp/plugin_function_1.js': ['test/fixtures/entry.js'],
+          'tmp/plugin_function_2.js': ['test/fixtures/entry.js']
         }
       }
     },
