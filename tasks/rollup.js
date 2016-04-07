@@ -8,7 +8,7 @@
 
 'use strict';
 
-var Promise = require('es6-promise').Promise;
+var Promise = require('bluebird').Promise;
 var rollup = require('rollup');
 var path = require('path');
 
