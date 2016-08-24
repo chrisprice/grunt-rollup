@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
     var options = this.options({
       external: [],
-      format: 'es6',
+      format: 'es',
       exports: 'auto',
       moduleId: null,
       moduleName: null,
