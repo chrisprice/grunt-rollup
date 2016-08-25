@@ -43,14 +43,16 @@ module.exports = function(grunt) {
         grunt.fail.warn('No entry point specified.');
       }
 
+      var entry;
       if (f.src.length > 1) {
-        grunt.fail.warn('Multiple entry points are not supported.');
-      }
+        entry = f.src;
+        grunt.log.writeln('Multiple entry points detected. Be sure to include rollup-plugin-multi-entry in plugins.');
+      } else {
+        entry = f.src[0];
 
-      var entry = f.src[0];
-
-      if (!grunt.file.exists(entry)) {
-        grunt.fail.warn('Entry point "' + entry + '" not found.');
+        if (!grunt.file.exists(entry)) {
+          grunt.fail.warn('Entry point "' + entry + '" not found.');
+        }
       }
 
       var plugins = options.plugins;
