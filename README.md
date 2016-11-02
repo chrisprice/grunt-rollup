@@ -5,7 +5,7 @@
 > Grunt plugin for [rollup](https://github.com/rollup/rollup) - next-generation ES6 module bundler
 
 ## Getting Started
-This plugin requires Grunt `~0.4.5`
+This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -60,7 +60,7 @@ grunt.initConfig({
 });
 ```
 
-###Usage with Plugins
+### Usage with Plugins
 
 ```js
 var babel = require('rollup-plugin-babel');
@@ -68,10 +68,10 @@ var babel = require('rollup-plugin-babel');
 grunt.initConfig({
   rollup: {
     options: {
-    plugins: [
-          babel({
-              exclude: './node_modules/**'
-          })
+      plugins: [
+        babel({
+          exclude: './node_modules/**'
+        })
       ]
     },
     files: {
@@ -81,6 +81,34 @@ grunt.initConfig({
   },
 });
 ```
+
+#### Plugin getter
+
+Some plugins are stateful and this doesn't play nice with multiple bundles. For example the `rollup-plugin-babel` plugin keeps a track of used `babel` helpers, and passing the configured plugin only once will cause the helpers to leak from one bundle to another. To prevent that, pass a function that returns an array of plugins, like this:
+
+```js
+var babel = require('rollup-plugin-babel');
+
+grunt.initConfig({
+  rollup: {
+    options: {
+      plugins: function() {
+        return [
+          babel({
+            exclude: './node_modules/**'
+          })
+        ];
+      }
+    },
+    files: {
+      'dest/bundle.js': 'src/entry.js',
+      'dest/bundle2.js': 'src/entry2.js',
+    },
+  },
+});
+```
+
+This way the plugin will be refreshed for each bundle.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

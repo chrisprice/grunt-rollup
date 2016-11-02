@@ -8,7 +8,7 @@
 
 'use strict';
 
-var Promise = require('es6-promise').Promise;
+var Promise = require('bluebird').Promise;
 var rollup = require('rollup');
 var path = require('path');
 
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
     var options = this.options({
       external: [],
-      format: 'es6',
+      format: 'es',
       exports: 'auto',
       moduleId: null,
       moduleName: null,
@@ -43,20 +43,30 @@ module.exports = function(grunt) {
         grunt.fail.warn('No entry point specified.');
       }
 
+      var entry;
       if (f.src.length > 1) {
-        grunt.fail.warn('Multiple entry points are not supported.');
+        entry = f.src;
+        grunt.log.writeln('Multiple entry points detected. Be sure to include rollup-plugin-multi-entry in plugins.');
+      } else {
+        entry = f.src[0];
+
+        if (!grunt.file.exists(entry)) {
+          grunt.fail.warn('Entry point "' + entry + '" not found.');
+        }
       }
 
-      var entry = f.src[0];
+      var plugins = options.plugins;
 
-      if (!grunt.file.exists(entry)) {
-        grunt.fail.warn('Entry point "' + entry + '" not found.');
+      if (typeof plugins === 'function') {
+        plugins = plugins();
       }
 
       return rollup.rollup({
         entry: entry,
         external: options.external,
-        plugins : options.plugins
+        plugins: plugins,
+        context: options.context,
+        moduleContext: options.moduleContext
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
