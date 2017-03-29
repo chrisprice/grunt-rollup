@@ -83,6 +83,16 @@ module.exports = function(grunt) {
           'tmp/plugin_function_1.js': ['test/fixtures/entry.js'],
           'tmp/plugin_function_2.js': ['test/fixtures/entry.js']
         }
+      },
+      onwarn: {
+        options: {
+          onwarn: function() {
+            grunt.file.write('tmp/warn_intercepted');
+          }
+        },
+        files: {
+          'tmp/onwarn.js': ['test/fixtures/warn.js']
+        }
       }
     },
 

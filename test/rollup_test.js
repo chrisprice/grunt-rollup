@@ -1,12 +1,17 @@
 'use strict';
 
 var grunt = require('grunt');
+var fs = require('fs');
 
 function assertFilesSame(test, actual, expected, msg) {
   var actualContents = grunt.file.read(actual);
   var expectedContents = grunt.file.read(expected);
 
   test.equal(actualContents, expectedContents, msg);
+}
+
+function assertFileExists(test, file, msg) {
+  test.ok(fs.existsSync(file), msg);
 }
 
 exports.rollup = {
@@ -64,6 +69,17 @@ exports.rollup = {
     assertFilesSame(test, 'tmp/plugin_function_2.js',
       'test/expected/plugin_function_2.js',
       'should handle a plugins getter.');
+
+    test.done();
+  },
+  onwarn: function(test) {
+    test.expect(2);
+
+    assertFileExists(test, 'tmp/onwarn.js',
+      'should generete file normally.');
+
+    assertFileExists(test, 'tmp/warn_intercepted',
+      'should intercept warning.');
 
     test.done();
   }
