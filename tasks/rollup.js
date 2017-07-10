@@ -76,7 +76,7 @@ module.exports = function(grunt) {
           sourceMapFile = path.resolve(f.dest);
         }
 
-        var result = bundle.generate({
+        return bundle.generate({
           format: options.format,
           exports: options.exports,
           moduleId: options.moduleId,
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
           sourceMap: options.sourceMap,
           sourceMapFile: sourceMapFile
         });
-
+      }).then(function(result) {
         var code = result.code;
 
         if (options.sourceMap === true) {
