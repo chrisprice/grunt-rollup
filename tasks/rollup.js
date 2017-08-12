@@ -8,7 +8,6 @@
 
 'use strict';
 
-var Promise = require('bluebird').Promise;
 var rollup = require('rollup');
 var path = require('path');
 
