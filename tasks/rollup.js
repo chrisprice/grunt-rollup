@@ -32,6 +32,7 @@ module.exports = function(grunt) {
       outro: null,
       onwarn: null,
       plugins:[],
+      pureExternalModules: false,
       sourceMap: false,
       sourceMapFile: null,
       sourceMapRelativePaths: false
@@ -67,7 +68,8 @@ module.exports = function(grunt) {
         plugins: plugins,
         context: options.context,
         moduleContext: options.moduleContext,
-        onwarn: options.onwarn
+        onwarn: options.onwarn,
+        pureExternalModules: options.pureExternalModules
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
