@@ -18,6 +18,7 @@ module.exports = function(grunt) {
     var done = this.async();
 
     var options = this.options({
+      cache: null,
       external: [],
       format: 'es',
       exports: 'auto',
@@ -29,13 +30,16 @@ module.exports = function(grunt) {
       banner: null,
       footer: null,
       intro: null,
+      preferConst: false,
       outro: null,
       onwarn: null,
+      paths: null,
       plugins:[],
       pureExternalModules: false,
       sourceMap: false,
       sourceMapFile: null,
-      sourceMapRelativePaths: false
+      sourceMapRelativePaths: false,
+      treeshake: true
     });
 
     var promises = this.files.map(function(f) {
@@ -63,13 +67,16 @@ module.exports = function(grunt) {
       }
 
       return rollup.rollup({
-        entry: entry,
+        cache: options.cache,
+        input: entry,
         external: options.external,
         plugins: plugins,
         context: options.context,
         moduleContext: options.moduleContext,
         onwarn: options.onwarn,
-        pureExternalModules: options.pureExternalModules
+        preferConst: options.preferConst,
+        pureExternalModules: options.pureExternalModules,
+        treeshake: options.treeshake
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
@@ -80,17 +87,18 @@ module.exports = function(grunt) {
         return bundle.generate({
           format: options.format,
           exports: options.exports,
+          paths: options.paths,
           moduleId: options.moduleId,
-          moduleName: options.moduleName,
+          name: options.moduleName,
           globals: options.globals,
           indent: options.indent,
-          useStrict: options.useStrict,
+          strict: options.useStrict,
           banner: options.banner,
           footer: options.footer,
           intro: options.intro,
           outro: options.outro,
-          sourceMap: options.sourceMap,
-          sourceMapFile: sourceMapFile
+          sourcemap: options.sourceMap,
+          sourcemapFile: sourceMapFile
         });
       }).then(function(result) {
         var code = result.code;
