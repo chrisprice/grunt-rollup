@@ -39,7 +39,8 @@ module.exports = function(grunt) {
       sourceMap: false,
       sourceMapFile: null,
       sourceMapRelativePaths: false,
-      treeshake: true
+      treeshake: true,
+      interop: true
     });
 
     var promises = this.files.map(function(f) {
@@ -76,7 +77,8 @@ module.exports = function(grunt) {
         onwarn: options.onwarn,
         preferConst: options.preferConst,
         pureExternalModules: options.pureExternalModules,
-        treeshake: options.treeshake
+        treeshake: options.treeshake,
+        interop: options.interop
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
