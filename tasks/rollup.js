@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         preferConst: options.preferConst,
         pureExternalModules: options.pureExternalModules,
         treeshake: options.treeshake,
-        interop: options.interop
+        output: { interop: options.interop }
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
@@ -87,10 +87,10 @@ module.exports = function(grunt) {
         }
 
         return bundle.generate({
+          amd: { id: options.moduleId },
           format: options.format,
           exports: options.exports,
           paths: options.paths,
-          moduleId: options.moduleId,
           name: options.moduleName,
           globals: options.globals,
           indent: options.indent,
