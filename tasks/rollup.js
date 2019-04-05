@@ -40,7 +40,11 @@ module.exports = function(grunt) {
       sourceMapFile: null,
       sourceMapRelativePaths: false,
       treeshake: true,
-      interop: true
+      interop: true,
+      amd: {
+        id: null,
+        define: null,
+      }
     });
 
     var promises = this.files.map(function(f) {
@@ -78,7 +82,6 @@ module.exports = function(grunt) {
         preferConst: options.preferConst,
         pureExternalModules: options.pureExternalModules,
         treeshake: options.treeshake,
-        interop: options.interop
       }).then(function(bundle) {
 
         var sourceMapFile = options.sourceMapFile;
@@ -90,7 +93,7 @@ module.exports = function(grunt) {
           format: options.format,
           exports: options.exports,
           paths: options.paths,
-          moduleId: options.moduleId,
+          amd: options.amd,
           name: options.moduleName,
           globals: options.globals,
           indent: options.indent,
@@ -100,7 +103,8 @@ module.exports = function(grunt) {
           intro: options.intro,
           outro: options.outro,
           sourcemap: options.sourceMap,
-          sourcemapFile: sourceMapFile
+          sourcemapFile: sourceMapFile,
+          interop: options.interop,
         });
       }).then(function(result) {
         var code = result.code;
