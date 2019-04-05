@@ -1,5 +1,3 @@
-## This repo is unmaintained, if you are interested in taking over please get in touch.
-
 # grunt-rollup
 [![Build Status](https://travis-ci.org/chrisprice/grunt-rollup.svg)](https://travis-ci.org/chrisprice/grunt-rollup)
 [![dependencies](https://david-dm.org/chrisprice/grunt-rollup.svg)](https://david-dm.org/chrisprice/grunt-rollup)
