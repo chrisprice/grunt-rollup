@@ -1,6 +1,6 @@
 # grunt-rollup
-[![Build Status](https://travis-ci.org/chrisprice/grunt-rollup.svg)](https://travis-ci.org/chrisprice/grunt-rollup)
-[![dependencies](https://david-dm.org/chrisprice/grunt-rollup.svg)](https://david-dm.org/chrisprice/grunt-rollup)
+[![Build Status](https://badgen.net/travis/chrisprice/grunt-rollup/master)](https://travis-ci.org/chrisprice/grunt-rollup)
+[![Plugin size](https://badgen.net/packagephobia/publish/grunt-rollup)](https://packagephobia.now.sh/result?p=grunt-rollup)
 
 > Grunt plugin for [rollup](https://github.com/rollup/rollup) - next-generation ES6 module bundler
 
