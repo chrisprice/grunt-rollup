@@ -31,6 +31,7 @@ module.exports = (grunt) => {
                 id: null,
                 define: null,
             },
+            extend: false,
         });
 
         const promises = current.files.map((files) => {
@@ -70,6 +71,7 @@ module.exports = (grunt) => {
                 sourcemap,
                 sourcemapFile,
                 interop,
+                extend,
             }) => ({
                 format,
                 exports,
@@ -86,6 +88,7 @@ module.exports = (grunt) => {
                 sourcemap,
                 sourcemapFile,
                 interop,
+                extend,
             }))(options);
 
             return rollup
