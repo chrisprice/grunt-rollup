@@ -17,16 +17,18 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "lint": "eslint \"**/*.js\"",
+    "test": "ava"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^1.0.0"
+    "@gmartigny/eslint-config": "^1.2.3",
+    "ava": "^1.4.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-ava": "^6.0.0",
+    "grunt": "^1.0.4"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"

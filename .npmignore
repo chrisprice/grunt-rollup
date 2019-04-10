@@ -1,4 +1,3 @@
 test
-.jshintrc
+.eslintrc
 .travis.yml
-Gruntfile.js
