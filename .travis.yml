@@ -1,13 +1,12 @@
 language: node_js
 
 node_js:
-  - "4.0"
-  - "6.0"
-  - "8.0"
-  - "9.0"
+  - "6"
+  - "9"
+  - "latest"
 
 sudo: false
 
-install: 
+install:
 - npm install
 - npm install -g grunt-cli
