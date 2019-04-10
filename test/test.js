@@ -24,7 +24,6 @@ test.serial.cb("Task basic behavior", (t) => {
         },
     });
     grunt.tasks("rollup", [], () => {
-        checkFile(t, dest);
         t.end();
     });
 });
@@ -38,7 +37,7 @@ test.serial.cb("With source map", (t) => {
                     [dest]: ["fixtures/basic.js"],
                 },
                 options: {
-                    sourceMap: true,
+                    sourcemap: true,
                 },
             },
         },
@@ -59,7 +58,7 @@ test.serial.cb("With source map inline", (t) => {
                     [dest]: ["fixtures/basic.js"],
                 },
                 options: {
-                    sourceMap: "inline",
+                    sourcemap: "inline",
                 },
             },
         },
