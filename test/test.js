@@ -24,6 +24,7 @@ test.serial.cb("Task basic behavior", (t) => {
         },
     });
     grunt.tasks("rollup", [], () => {
+        checkFile(t, dest);
         t.end();
     });
 });
@@ -65,6 +66,24 @@ test.serial.cb("With source map inline", (t) => {
     });
     grunt.tasks("rollup", [], () => {
         checkFile(t, dest);
+        t.end();
+    });
+});
+
+test.serial.cb("With multiple files input", (t) => {
+    const dest = "fixtures/expected";
+    grunt.config.init({
+        rollup: {
+            multiple: {
+                files: {
+                    [dest]: ["fixtures/basic.js", "fixtures/second.js"],
+                },
+            },
+        },
+    });
+    grunt.tasks("rollup", [], () => {
+        checkFile(t, `${dest}/basic.js`);
+        checkFile(t, `${dest}/second.js`);
         t.end();
     });
 });
@@ -115,6 +134,6 @@ test.serial.cb("With plugin function", (t) => {
     });
 });
 
-test.after("Cleanup", () => {
+test.afterEach("Cleanup", () => {
     grunt.file.delete("fixtures/expected/");
 });

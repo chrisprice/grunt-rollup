@@ -91,6 +91,8 @@ module.exports = (grunt) => {
                 extend,
             }))(options);
 
+            const isMultipleInput = Array.isArray(files.src) && files.src.length > 1;
+
             return rollup
                 .rollup({
                     ...inputOptions,
@@ -99,21 +101,23 @@ module.exports = (grunt) => {
                 })
                 .then(bundle => bundle.generate({
                     ...outputOptions,
-                    file: files.dest,
+                    [isMultipleInput ? "dir" : "files"]: files.dest,
                 }))
                 .then(result => result.output.forEach((output) => {
                     let { code } = output;
+                    const dest = isMultipleInput ? path.join(files.dest, output.fileName) : files.dest;
+                    const dir = path.dirname(dest);
 
                     if (outputOptions.sourcemap === true) {
-                        const sourceMapOutPath = outputOptions.sourcemapFile || `${files.dest}.map`;
+                        const sourceMapOutPath = outputOptions.sourcemapFile || `${dest}.map`;
                         grunt.file.write(sourceMapOutPath, String(output.map));
-                        code += `\n//# sourceMappingURL=${path.relative(path.dirname(files.dest), sourceMapOutPath)}`;
+                        code += `\n//# sourceMappingURL=${path.relative(dir, sourceMapOutPath)}`;
                     }
                     else if (outputOptions.sourcemap === "inline") {
                         code += `\n//# sourceMappingURL=${output.map.toUrl()}`;
                     }
 
-                    grunt.file.write(files.dest, code);
+                    grunt.file.write(dest, code);
                 }));
         });
 
