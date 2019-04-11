@@ -45,8 +45,6 @@ Supports all the options from [rollup's JavaScript API](https://github.com/rollu
 ### Sourcemaps
 A value of `true` for `sourceMap` will output the map to a file with the same name as the JavaScript with `.map` appended. A value of `inline` for `sourceMap` will inline the sourcemap into the source file.
 
-To get relative paths, set `sourceMapRelativePaths` to `true`. This sets rollup `sourceMapFile` property, making the sourcemap relative to the output file.
-
 ### Usage Examples
 
 ```js
@@ -54,7 +52,7 @@ grunt.initConfig({
   rollup: {
     options: {},
     files: {
-      'dest/bundle.js': ['src/entry.js'], // Only one source file is permitted
+      'dest/bundle.js': ['src/entry.js'],
     },
   },
 });
@@ -76,7 +74,7 @@ grunt.initConfig({
     },
     files: {
       'dest':'dest/bundle.js',
-      'src' : 'src/entry.js', // Only one source file is permitted
+      'src' : 'src/entry.js',
     },
   },
 });
@@ -84,7 +82,9 @@ grunt.initConfig({
 
 #### Plugin getter
 
-Some plugins are stateful and this doesn't play nice with multiple bundles. For example the `rollup-plugin-babel` plugin keeps a track of used `babel` helpers, and passing the configured plugin only once will cause the helpers to leak from one bundle to another. To prevent that, pass a function that returns an array of plugins, like this:
+Some plugins are stateful and this doesn't play nice with multiple bundles.
+For example the `rollup-plugin-babel` plugin keeps a track of used `babel` helpers, and passing the configured plugin only once will cause the helpers to leak from one bundle to another.
+To prevent that, pass a function that returns an array of plugins, like this:
 
 ```js
 var babel = require('rollup-plugin-babel');
@@ -111,11 +111,17 @@ grunt.initConfig({
 This way the plugin will be refreshed for each bundle.
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+Any contributions is welcomed. Make sure to read [the contributing manual](contributing.md) for more information.
 
-## Releasing
+### Contributors
+| [![Chris Price](https://github.com/chrisprice.png?size=99)<br><b>chrisprice - Creator</b>](https://github.com/chrisprice) | [![Guillaume Martigny](https://github.com/GMartigny.png?size=99)<br><b>GMartigny - Maintainer</b>](https://github.com/GMartigny) |
+| --- | --- |
+> All contributions are valued, you can add yourself to this list (or request to be added) whatever your contribution is.
+<!--
+Use this pattern to add yourself:
+[![FULL NAME or USERNAME](https://github.com/USERNAME.png?size=99)<br><b>USERNAME</b>](https://github.com/USERNAME)
+-->
 
-```bash
-npm version minor && git push --tags origin master && npm publish
-```
+## License 
 
+[MIT](license-MIT)

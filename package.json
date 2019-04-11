@@ -35,7 +35,11 @@
   },
   "keywords": [
     "gruntplugin",
-    "rollup"
+    "rollup",
+    "bundler",
+    "packager",
+    "build",
+    "tool"
   ],
   "dependencies": {
     "rollup": "^1.9.3"
