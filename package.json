@@ -20,7 +20,7 @@
     },
     "license": "MIT",
     "engines": {
-        "node": ">=4.0.0"
+        "node": ">=8.6.0"
     },
     "scripts": {
         "lint": "eslint \"**/*.js\"",
