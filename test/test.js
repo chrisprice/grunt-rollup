@@ -9,7 +9,7 @@ grunt.file.setBase("./test/");
 
 const checkFile = (t, dest) => {
     const fileContent = grunt.file.read(dest);
-    t.snapshot(fileContent);
+    t.snapshot(fileContent, dest);
 };
 
 test.serial.cb("Task basic behavior", (t) => {
@@ -84,6 +84,22 @@ test.serial.cb("With multiple files input", (t) => {
     grunt.tasks("rollup", [], () => {
         checkFile(t, `${dest}/_basic.js`);
         checkFile(t, `${dest}/_second.js`);
+        t.end();
+    });
+});
+
+test.serial.cb("With src and dest config", (t) => {
+    const dest = "fixtures/expected/target.js";
+    grunt.config.init({
+        rollup: {
+            srcDest: {
+                src: "fixtures/_basic.js",
+                dest,
+            },
+        },
+    });
+    grunt.tasks("rollup", [], () => {
+        checkFile(t, dest);
         t.end();
     });
 });
