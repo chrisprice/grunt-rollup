@@ -1,7 +1,7 @@
 const test = require("ava");
 const grunt = require("grunt");
 
-const plugin = require("./fixtures/plugin");
+const plugin = require("./fixtures/_plugin");
 
 grunt.task.init = () => {};
 grunt.loadTasks("./tasks/");
@@ -18,7 +18,7 @@ test.serial.cb("Task basic behavior", (t) => {
         rollup: {
             basic: {
                 files: {
-                    [dest]: ["fixtures/basic.js"],
+                    [dest]: ["fixtures/_basic.js"],
                 },
             },
         },
@@ -35,7 +35,7 @@ test.serial.cb("With source map", (t) => {
         rollup: {
             sourcemap: {
                 files: {
-                    [dest]: ["fixtures/basic.js"],
+                    [dest]: ["fixtures/_basic.js"],
                 },
                 options: {
                     sourcemap: true,
@@ -56,7 +56,7 @@ test.serial.cb("With source map inline", (t) => {
         rollup: {
             sourcemap_inline: {
                 files: {
-                    [dest]: ["fixtures/basic.js"],
+                    [dest]: ["fixtures/_basic.js"],
                 },
                 options: {
                     sourcemap: "inline",
@@ -76,14 +76,14 @@ test.serial.cb("With multiple files input", (t) => {
         rollup: {
             multiple: {
                 files: {
-                    [dest]: ["fixtures/basic.js", "fixtures/second.js"],
+                    [dest]: ["fixtures/_basic.js", "fixtures/_second.js"],
                 },
             },
         },
     });
     grunt.tasks("rollup", [], () => {
-        checkFile(t, `${dest}/basic.js`);
-        checkFile(t, `${dest}/second.js`);
+        checkFile(t, `${dest}/_basic.js`);
+        checkFile(t, `${dest}/_second.js`);
         t.end();
     });
 });
@@ -95,8 +95,8 @@ test.serial.cb("With plugin array", (t) => {
         rollup: {
             plugin_array: {
                 files: {
-                    [dest1]: ["fixtures/basic.js"],
-                    [dest2]: ["fixtures/basic.js"],
+                    [dest1]: ["fixtures/_basic.js"],
+                    [dest2]: ["fixtures/_basic.js"],
                 },
                 options: {
                     plugins: [plugin()],
@@ -118,8 +118,8 @@ test.serial.cb("With plugin function", (t) => {
         rollup: {
             plugin_function: {
                 files: {
-                    [dest1]: ["fixtures/basic.js"],
-                    [dest2]: ["fixtures/basic.js"],
+                    [dest1]: ["fixtures/_basic.js"],
+                    [dest2]: ["fixtures/_basic.js"],
                 },
                 options: {
                     plugins: () => [plugin()],

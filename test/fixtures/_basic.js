@@ -1,4 +1,4 @@
-import answer from "./module";
+import answer from "./_module";
 
 const foo = "bar";
 
