@@ -121,8 +121,13 @@ test.serial.cb("With plugin array", (t) => {
         },
     });
     grunt.tasks("rollup", [], () => {
-        checkFile(t, dest1);
-        checkFile(t, dest2);
+        const startsWith1 = /^\/\/\s1/; //matches // 1
+        const startsWith2 = /^\/\/\s2/; //matches // 2
+        const outputA = grunt.file.read(dest1).trim();
+        const outputB = grunt.file.read(dest2).trim();
+        const pluginPrinted12 = outputA.match(startsWith1) && outputB.match(startsWith2);
+        const pluginPrinted21 = outputA.match(startsWith2) && outputB.match(startsWith1);
+        t.truthy(pluginPrinted12 || pluginPrinted21);
         t.end();
     });
 });
