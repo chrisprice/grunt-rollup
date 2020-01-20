@@ -107,6 +107,9 @@ test.serial.cb("With src and dest config", (t) => {
 test.serial.cb("With plugin array", (t) => {
     const dest1 = "fixtures/expected/plugin1.js";
     const dest2 = "fixtures/expected/plugin2.js";
+
+    const check = () => t.pass();
+
     grunt.config.init({
         rollup: {
             plugin_array: {
@@ -115,11 +118,15 @@ test.serial.cb("With plugin array", (t) => {
                     [dest2]: ["fixtures/_basic.js"],
                 },
                 options: {
-                    plugins: [plugin()],
+                    plugins: [
+                        plugin(),
+                        check(),
+                    ],
                 },
             },
         },
     });
+    t.plan(3);
     grunt.tasks("rollup", [], () => {
         checkFile(t, dest1);
         checkFile(t, dest2);
@@ -130,6 +137,9 @@ test.serial.cb("With plugin array", (t) => {
 test.serial.cb("With plugin function", (t) => {
     const dest1 = "fixtures/expected/plugin1.js";
     const dest2 = "fixtures/expected/plugin2.js";
+
+    const check = () => t.pass();
+
     grunt.config.init({
         rollup: {
             plugin_function: {
@@ -138,11 +148,15 @@ test.serial.cb("With plugin function", (t) => {
                     [dest2]: ["fixtures/_basic.js"],
                 },
                 options: {
-                    plugins: () => [plugin()],
+                    plugins: () => [
+                        plugin(),
+                        check(),
+                    ],
                 },
             },
         },
     });
+    t.plan(4);
     grunt.tasks("rollup", [], () => {
         checkFile(t, dest1);
         checkFile(t, dest2);
