@@ -114,8 +114,8 @@ This way the plugin will be refreshed for each bundle.
 Any contributions is welcomed. Make sure to read [the contributing manual](contributing.md) for more information.
 
 ### Contributors
-| [![Chris Price](https://github.com/chrisprice.png?size=99)<br><b>chrisprice - Creator</b>](https://github.com/chrisprice) | [![Guillaume Martigny](https://github.com/GMartigny.png?size=99)<br><b>GMartigny - Maintainer</b>](https://github.com/GMartigny) |
-| --- | --- |
+| [![chrisprice](https://github.com/chrisprice.png?size=99)<br><b>chrisprice</b>](https://github.com/chrisprice) | [![GMartigny](https://github.com/GMartigny.png?size=99)<br><b>GMartigny</b>](https://github.com/GMartigny) | [![scythianfuego](https://github.com/scythianfuego.png?size=99)<br><b>scythianfuego</b>](https://github.com/scythianfuego) |
+| --- | --- | --- |
 > All contributions are valued, you can add yourself to this list (or request to be added) whatever your contribution is.
 <!--
 Use this pattern to add yourself:
