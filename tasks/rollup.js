@@ -174,7 +174,7 @@ module.exports = (grunt) => {
                 })
                 .then(bundle => bundle.generate({
                     ...outputOptions,
-                    [isMultipleInput ? "dir" : "files"]: files.dest,
+                    [isMultipleInput ? "dir" : "file"]: files.dest,
                 }))
                 .then(result => result.output.forEach((output) => {
                     let { code } = output;
