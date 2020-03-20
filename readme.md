@@ -124,4 +124,4 @@ Use this pattern to add yourself:
 
 ## License 
 
-[MIT](license-MIT)
+[MIT](license)
