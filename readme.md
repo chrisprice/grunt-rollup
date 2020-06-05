@@ -52,7 +52,7 @@ grunt.initConfig({
   rollup: {
     options: {},
     files: {
-      'dest/bundle.js': ['src/entry.js'],
+      'dest/bundle.js': 'src/entry.js',
     },
   },
 });
@@ -61,7 +61,7 @@ grunt.initConfig({
 ### Usage with Plugins
 
 ```js
-var babel = require('rollup-plugin-babel');
+var babel = require('@rollup/plugin-babel').default;
 
 grunt.initConfig({
   rollup: {
@@ -73,8 +73,7 @@ grunt.initConfig({
       ]
     },
     files: {
-      'dest':'dest/bundle.js',
-      'src' : 'src/entry.js',
+      'dest/bundle.js': 'src/entry.js',
     },
   },
 });
