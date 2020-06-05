@@ -63,6 +63,7 @@ module.exports = (grunt) => {
             noConflict: false,
             preferConst: false,
             strict: true,
+            systemNullSetters: false,
         });
 
         const promises = current.files.map((files) => {
@@ -136,6 +137,7 @@ module.exports = (grunt) => {
                 noConflict,
                 preferConst,
                 strict,
+                systemNullSetters,
             }) => ({
                 format,
                 globals,
@@ -168,6 +170,7 @@ module.exports = (grunt) => {
                 noConflict,
                 preferConst,
                 strict,
+                systemNullSetters,
             }))(options);
 
             const isMultipleInput = Array.isArray(files.src) && files.src.length > 1;
