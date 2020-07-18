@@ -1,6 +1,11 @@
 const path = require("path");
 const rollup = require("rollup");
 
+const ko = 1024;
+const formatOctet = value => (value < (ko ** 2) ?
+    `${(value / ko).toFixed(1)}Ko` :
+    `${(value / (ko ** 2)).toFixed(1)}Mo`);
+
 module.exports = (grunt) => {
     grunt.registerMultiTask("rollup", "Grunt plugin for rollup - next-generation ES6 module bundler", () => {
         const { current } = grunt.task;
@@ -23,6 +28,9 @@ module.exports = (grunt) => {
             preserveSymlinks: false,
             shimMissingExports: false,
             treeshake: true,
+            // experimental
+            experimentalCacheExpiry: 10,
+            perf: false,
             // core output options
             format: "es",
             globals: {},
@@ -84,6 +92,8 @@ module.exports = (grunt) => {
                 preserveSymlinks,
                 shimMissingExports,
                 treeshake,
+                experimentalCacheExpiry,
+                perf,
             }) => ({
                 external,
                 cache,
@@ -97,6 +107,8 @@ module.exports = (grunt) => {
                 preserveSymlinks,
                 shimMissingExports,
                 treeshake,
+                experimentalCacheExpiry,
+                perf,
             }))(options);
             const outputOptions = (({
                 format,
@@ -178,10 +190,22 @@ module.exports = (grunt) => {
                     input: files.src,
                     plugins,
                 })
-                .then(bundle => bundle.generate({
-                    ...outputOptions,
-                    [isMultipleInput ? "dir" : "file"]: files.dest,
-                }))
+                .then((bundle) => {
+                    if (inputOptions.perf && bundle.getTimings) {
+                        const timings = bundle.getTimings();
+                        Object.keys(timings).forEach((key) => {
+                            grunt.log.subhead(key);
+                            const perfs = timings[key];
+                            const memory = formatOctet(perfs[1]);
+                            const total = formatOctet(perfs[2]);
+                            grunt.log.oklns(`${(perfs[0]).toFixed(1)}ms\t+${memory} (total ${total})`);
+                        });
+                    }
+                    return bundle.generate({
+                        ...outputOptions,
+                        [isMultipleInput ? "dir" : "file"]: files.dest,
+                    });
+                })
                 .then(result => result.output.forEach((output) => {
                     let { code } = output;
                     const dest = isMultipleInput ? path.join(files.dest, output.fileName) : files.dest;
