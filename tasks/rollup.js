@@ -58,10 +58,7 @@ module.exports = (grunt) => {
             sourcemapFile: null,
             sourcemapPathTransform: null,
             // danger zone
-            amd: {
-                id: null,
-                define: null,
-            },
+            amd: null,
             esModule: true,
             exports: "auto",
             freeze: true,

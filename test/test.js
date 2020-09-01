@@ -164,6 +164,28 @@ test.serial.cb("With plugin function", (t) => {
     });
 });
 
+test.serial.cb("UMD", (t) => {
+    const dest = "fixtures/expected/umd.js";
+    grunt.config.init({
+        rollup: {
+            basic: {
+                options: {
+                    format: "umd",
+                    name: "name",
+                    exports: "named",
+                },
+                files: {
+                    [dest]: ["fixtures/_module.js"],
+                },
+            },
+        },
+    });
+    grunt.tasks("rollup", [], () => {
+        checkFile(t, dest);
+        t.end();
+    });
+});
+
 test.afterEach("Cleanup", () => {
     grunt.file.delete("fixtures/expected/");
 });
