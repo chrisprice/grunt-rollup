@@ -47,6 +47,6 @@
         "tool"
     ],
     "dependencies": {
-        "rollup": "^2.34.2"
+        "rollup": "^2.38.5"
     }
 }
