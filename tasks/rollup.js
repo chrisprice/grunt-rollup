@@ -187,7 +187,7 @@ module.exports = (grunt) => {
             }))(options);
 
             const isMultipleFiles = Array.isArray(files.src) && files.src.length > 1;
-            const isDestFile = files.dest.indexOf(".") > 0;
+            const isDestFile = files.dest.indexOf(".") != -1;
             const isMultipleInput = options.forceDirUse || isMultipleFiles || isDestFile;
             return rollup
                 .rollup({
