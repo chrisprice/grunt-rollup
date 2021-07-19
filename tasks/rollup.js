@@ -70,6 +70,7 @@ module.exports = (grunt) => {
             preferConst: false,
             strict: true,
             systemNullSetters: false,
+            forceDirUse: false
         });
 
         const promises = current.files.map((files) => {
@@ -185,8 +186,10 @@ module.exports = (grunt) => {
                 systemNullSetters,
             }))(options);
 
-            const isMultipleInput = Array.isArray(files.src) && files.src.length > 1;
-
+            const isMultipleFiles = Array.isArray(files.src) && files.src.length > 1;
+            const isDestFile = files.dest.indexOf(".") > 0;
+            const isMultipleInput = options.forceDirUse || isMultipleFiles || isDestFile;
+            
             return rollup
                 .rollup({
                     ...inputOptions,
