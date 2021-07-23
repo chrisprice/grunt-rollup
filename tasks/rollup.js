@@ -17,6 +17,8 @@ module.exports = (grunt) => {
             plugins: [],
             // advanced input options
             cache: null,
+            makeAbsoluteExternalsRelative: true,
+            maxParallelFileReads: 20,
             onwarn: null,
             preserveEntrySignatures: "strict",
             strictDeprecations: false,
@@ -81,6 +83,8 @@ module.exports = (grunt) => {
             const inputOptions = (({
                 external,
                 cache,
+                makeAbsoluteExternalsRelative,
+                maxParallelFileReads,
                 onwarn,
                 preserveEntrySignatures,
                 strictDeprecations,
@@ -96,6 +100,8 @@ module.exports = (grunt) => {
             }) => ({
                 external,
                 cache,
+                makeAbsoluteExternalsRelative,
+                maxParallelFileReads,
                 onwarn,
                 preserveEntrySignatures,
                 strictDeprecations,
