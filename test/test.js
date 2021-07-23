@@ -186,6 +186,33 @@ test.serial.cb("UMD", (t) => {
     });
 });
 
+test.serial.cb("Manual chunks", (t) => {
+    const dest = "fixtures/expected";
+    grunt.config.init({
+        rollup: {
+            options: {
+                manualChunks (id) {
+                    if (!id.includes("basic")) {
+                        return "chunk";
+                    }
+                    return null;
+                },
+                chunkFileNames: "[name]_123.js",
+            },
+            expand: {
+                files: {
+                    [dest]: "fixtures/_basic.js",
+                },
+            },
+        },
+    });
+    grunt.tasks("rollup", [], () => {
+        checkFile(t, `${dest}/_basic.js`);
+        checkFile(t, `${dest}/chunk_123.js`);
+        t.end();
+    });
+});
+
 test.afterEach("Cleanup", () => {
     grunt.file.delete("fixtures/expected/");
 });
